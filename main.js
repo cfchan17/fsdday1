@@ -33,10 +33,8 @@ app.get(
 app.get(
     '/roll',
     (req, res) => {
-        let number = 9
-        if(number > 6) {
-            Math.floor(Math.random() * 10) + 1
-        }
+        let firstDie = Math.floor(Math.random() * 6) + 1
+        let secondDie = Math.floor(Math.random() * 6) + 1
 
         res.status(200)
         res.type('text/html')
