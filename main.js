@@ -36,11 +36,16 @@ app.get(
         let firstDie = Math.floor(Math.random() * 6) + 1
         let secondDie = Math.floor(Math.random() * 6) + 1
 
+        let firstFilename = firstDie.toString() + '.png'
+        let secondFilename = secondDie.toString() + '.png'
+
         res.status(200)
         res.type('text/html')
         res.render('roll',
             {
-                isLandingPage : false
+                isLandingPage : false,
+                firstDieFile : firstFilename,
+                secondDieFile : secondFilename
             }
         )
     }
