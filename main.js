@@ -66,7 +66,7 @@ app.get(
 )
 
 app.use((req,res) => {
-    res.status(300)
+    res.status(302)
     res.type('text/html')
     res.render('roll',
         {
