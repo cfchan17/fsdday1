@@ -14,11 +14,25 @@ app.engine('hbs',
 )
 app.set('view engine', 'hbs')
 
+// Roll Dice Function
+const roll_dice = () => Math.floor(Math.random() * 6) + 1
+
+//Image file name map
+const dice_images_map = {
+    1 : '1.png',
+    2 : '2.png',
+    3 : '3.png',
+    4 : '4.png',
+    5 : '5.png',
+    6 : '6.png'
+}
+
 //****** Middlewares ******/
 app.use(express.static(__dirname + '\\static\\images'))
+app.use(express.static(__dirname + '\\static'))
 
 app.get(
-    '/',
+    ['/', '/index.html'],
     (req, res) => {
         res.status(200)
         res.type('text/html')
@@ -33,11 +47,11 @@ app.get(
 app.get(
     '/roll',
     (req, res) => {
-        let firstDie = Math.floor(Math.random() * 6) + 1
-        let secondDie = Math.floor(Math.random() * 6) + 1
+        let firstDie = roll_dice()
+        let secondDie = roll_dice()
 
-        let firstFilename = firstDie.toString() + '.png'
-        let secondFilename = secondDie.toString() + '.png'
+        let firstFilename = dice_images_map[firstDie]
+        let secondFilename = dice_images_map[secondDie]
 
         res.status(200)
         res.type('text/html')
